@@ -1,2 +1,1 @@
-# web-dev-project-http5225
-Web Development projects on PHP, MySQL, Laravel
+# web-development-project-http5225
