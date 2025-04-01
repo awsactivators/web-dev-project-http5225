@@ -71,7 +71,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   composer create-project --prefer-dist laravel/laravel laravel
   cd laravel
   php artisan serve => start laravel
-  php artisan migrate:refresh => miigrate tables
+  php artisan migrate:refresh => recreates the table afresh (data will be lost)
   php artisan make:model -a --requests => create a table with all folders
 
    INFO  Model [app/Models/Student.php] created successfully.  
@@ -96,3 +96,52 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
  -->
+
+
+ <!-- 
+- create the blueprint table in the database/migration file 
+
+- go to model and select the student model file and specify protected $fillabale variables which are fields that will be filled by the users 
+
+database/factory is a shortcut for you to create fake realistic data. create all the fields you need using the fake() library (make sure to know the datatypes for your field.
+e.g. 'email' => fake() -> unique() -> safeEmaile()
+'fname' => fake() -> firstName()
+
+database/seeder run your factory via the database seeder. if ou have multiple seeder files put them inside the databaseeder file so that it is easy to migrate
+
+Student::factory(20) -> create()
+
+use the associated factory (in this case StudentFactory) to create the seader
+
+php artisan migrate:refresh --seed will delete the data and recreate it using the databseseeder
+
+route in routes/web.php is a simple route to get, looks for the path and then function
+
+route reources is used to tell the prefrix to all your routes (like prefix all routes with students) and specify where the controller is or to points to
+
+php artisan route:list creates all the routes needed
+
+resource/views create a folder for that student functionality and then create the individual files in them like index, create, edit, delete, detail
+
+create a blade php file inside the student view to create a component/layout that doesnt chage like header, footer that other files will use
+
+use @yield('conrent') in the body of the html which is where the page content is going to render
+
+in other file like index.blade.php use the @extends('layout') to look for the layout file
+
+and tell which section you want to render that content, looks for a 
+@section('content')
+
+--- content
+
+@endsection 
+
+
+add an index method to the student controller to return index view and with some data
+
+add return for create view
+
+create a form in create.blade.php using post method
+
+add rules in app/http/request/store--- for form validation (check laravel available validation rules documentation)
+  -->

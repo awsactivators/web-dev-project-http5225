@@ -13,9 +13,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        // render index view
         return view('students.index', [
-            'students' => Student::all(),
+            'students' => Student::all(), //this is called eloquent which gets all student data and on this view student data is available
         ]);
     }
 
@@ -25,6 +25,7 @@ class StudentController extends Controller
     public function create()
     {
         //
+        return view('students.create');
     }
 
     /**
@@ -32,7 +33,9 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        // call model Student and call the create method with the request validated() which validtes the student
+        Student::create($request->validated());
+        return redirect() -> route('students.index');
     }
 
     /**
@@ -41,6 +44,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         //
+        return view('students.edit');
     }
 
     /**
@@ -48,7 +52,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        // compacts converts it to var and sends the data to view
+        return view('students.edit', compact('student'));
     }
 
     /**
