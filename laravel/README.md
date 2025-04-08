@@ -72,7 +72,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   cd laravel
   php artisan serve => start laravel
   php artisan migrate:refresh => recreates the table afresh (data will be lost)
-  php artisan make:model -a --requests => create a table with all folders
+  php artisan make:model Student -a --requests => create a table with all folders
+
+  php artisan make:model Course -a --requests
 
    INFO  Model [app/Models/Student.php] created successfully.  
 
