@@ -36,6 +36,7 @@ class StudentController extends Controller
     {
         // call model Student and call the create method with the request validated() which validtes the student
         Student::create($request->validated());
+        $student -> courses() -> attach($request -> course);
         return redirect() -> route('students.index');
     }
 
